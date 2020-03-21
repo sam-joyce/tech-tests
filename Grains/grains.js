@@ -4,22 +4,22 @@
 
 // Write code that shows:
 // how many grains were on each square, and
+const grainsPerSquare = (num) => {
+    return ((2 ** (num - 1)));
+}
+
+console.log(grainsPerSquare(5));
+
+
 // the total number of grains
-
-const grainCounter = () => {
-    let chessBoard = [1];
-    let grains = 0;
-    for (i = 0; i < 63; i++) {
-        chessBoard.push(grains *= 2)
+const chessBoardOfGrains = () => {
+    let chessBoard = [];
+    for (i = 1; i < 64; i++) {
+        chessBoard.push(2 ** (i - 1));
     }
-    return chessBoard;
+    const totalGrains = chessBoard.reduce(function(a, b){
+        return a + b;
+    }, 0);
+    return totalGrains;
 }
-
-console.log(grainCounter());
-// console.log(chessBoard[44]);
-
-const grainsPerSquare = (number) => {
-    return (Math.pow(2, number -1));
-}
-
-console.log(grainsPerSquare(7));
+console.log(chessBoardOfGrains());
